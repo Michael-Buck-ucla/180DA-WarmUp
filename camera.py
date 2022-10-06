@@ -1,12 +1,11 @@
+# Code references:
+# http://www.learningaboutelectronics.com/Articles/How-to-find-the-largest-or-smallest-object-in-an-image-Python-OpenCV.php
+
 import numpy as np
 import cv2 as cv
 from matplotlib import pyplot as plt
 
 cap = cv.VideoCapture(0)
-
-green = np.uint8([[[100,200,80]]])
-hsv_green = cv.cvtColor(green,cv.COLOR_BGR2HSV)
-print( hsv_green )
 
 while(True):
     # Capture frame-by-frame
@@ -87,8 +86,3 @@ while(True):
 # When everything done, release the capture
 cap.release()
 cv.destroyAllWindows()
-
-#1 Tracking in HSV was definitely better than RGB since the hue has a single value. Since the RGB color is a balance between the colors, it is hard to be precise with the color you are tracking and still acommodate different light conditions
-# The threshold value needed for tracking was significant, more so for the RGB values than the HSV values. I believe this ahs to do with lighting
-#2. The tracking capabilities significantly varied based on the lighting. Under various conditions, tracking would still be possible, but the entire object would not be encompassed by the box. Since lighting changes the perceived HSV value of the object, the threshold range would need to increase to accomodate various lighting situations
-# The phone screen brightness played a big part on how succesful the code was at tracking the color. Contrary to what I expected, the tracking worked better for me at a lower phone screen brightness over a brighter one
