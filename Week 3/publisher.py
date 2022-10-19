@@ -42,7 +42,9 @@ client.loop_start()
 # payload must be a string, bytearray, int, float or None.
 for i in range(10):
     # client.publish('ece180d/test', float(np.random.random(1)), qos=1)
-    client.publish('ece180d/test', "This is message: " + str(i), qos=1)
+    # client.publish('ece180d/test', "This is message: " + str(i), qos=1)
+    test_list = [1,2,3,4]
+    client.publish('ece180d/test', bytearray(test_list), qos=1)
 
 # 6. use disconnect() to disconnect from the broker.
 client.loop_stop()
